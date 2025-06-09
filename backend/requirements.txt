@@ -1,0 +1,7 @@
+pandas
+mlxtend
+matplotlib
+seaborn
+openpyxl
+flask
+flask-cors
