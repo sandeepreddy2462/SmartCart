@@ -68,3 +68,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+# 🛒 Market Basket Analysis & Product Recommendation Platform
+
+An end-to-end **data science web application** that allows users to upload transactional datasets (CSV/XLSX), performs automated **EDA, visualization, and product association mining**, and returns **recommendations**. It also supports conversion to a full ML pipeline for scalable prediction.
+
+## 📌 Features
+
+✅ Upload `.csv` or `.xlsx` files  
+✅ Auto-cleaning and preprocessing  
+✅ Exploratory Data Analysis (EDA)  
+✅ Visual insights (sales trends, top items, transaction sizes)  
+✅ Frequent pattern mining using Apriori  
+✅ Rule-based recommendations  
+✅ ML model-ready architecture  
+✅ Full-stack (React + Flask + Python + MongoDB)
+
+## 🧠 Tech Stack
+
+| Layer          | Technology                        |
+|----------------|-----------------------------------|
+| Frontend       | React (Vite)                      |
+| Backend (API)  | Flask (Python)                    |
+| Data Science   | Pandas, MLxtend, Matplotlib       |
+| ML Model       | Scikit-learn / XGBoost (optional) |
+| Database       | MongoDB (optional)                |
+| File Uploads   | Flask `request.files`             |
+| Deployment     | Render / Railway + Vercel         |
+
+## 📁 Folder Structure
+
