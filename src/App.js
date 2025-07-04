@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UploadData from './components/UploadData';
 import Dashboard from './components/Dashboard';
+import './App.css';
 
 function App() {
   const [insights, setInsights] = useState(null);

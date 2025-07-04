@@ -2,9 +2,30 @@ import React from 'react';
 import './Dashboard.css';
 
 function Dashboard({ insights }) {
-  return (
+  const cellStyle = {
+  padding: '10px',
+  border: '1px solid #ccc',
+  textAlign: 'center'
+};
+
+return (
     <div className="p-4">
       <h2>Dashboard</h2>
+      <p>Welcome to the Market Insight Dashboard! Here you can view insights derived from your uploaded market data.</p>
+      <p>Use the upload feature to process your market data and generate insights.</p>
+
+      {insights?.columns && (
+        <div>
+          <h3 style={{ marginBottom: '10px' }}>Columns</h3>
+          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+            {Object.entries(insights.columns).map(([count, item], idx) => (
+              <li key={idx} style={{ marginBottom: '6px' }}>
+                {count}: {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {insights?.sales_chart_url && (
         <div className="chart-container">
@@ -12,23 +33,12 @@ function Dashboard({ insights }) {
           <img 
             src={`http://localhost:5000/${insights.sales_chart_url}`} 
             alt="Sales Trend" 
-            className="chart-image"
+            className="chart-image" 
           />
         </div>
       )}
 
-      {insights?.columns && (
-  <div>
-    <h3 style={{ marginBottom: '10px' }}>Columns</h3>
-    <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
-      {Object.entries(insights.columns).map(([count, item], idx) => (
-        <li key={idx} style={{ marginBottom: '6px' }}>
-          {count}: {item}
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+      
 
 
       {insights?.top_products && (
@@ -67,17 +77,27 @@ function Dashboard({ insights }) {
       {insights?.recommendations && (
         <div>
           <h3>🛒 Interesting Purchase Patterns</h3>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            {insights.recommendations.map((rule, idx) => (
-              <li key={idx} style={{ marginBottom: '12px', padding: '10px', background: '#f9f9f9', borderRadius: '8px' }}>
-                <p>
-                  <strong>If bought:</strong> {rule.antecedents.join(', ')}<br />
-                  <strong>Then likely:</strong> {rule.consequents.join(', ')}<br />
-                  <strong>Confidence:</strong> {rule.confidence.toFixed(2)} | <strong>Lift:</strong> {rule.lift.toFixed(2)}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '16px' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#f0f0f0' }}>
+                <th style={cellStyle}>If Bought</th>
+                <th style={cellStyle}>Then Likely</th>
+                <th style={cellStyle}>Confidence</th>
+                <th style={cellStyle}>Lift</th>
+              </tr>
+            </thead>
+            <tbody>
+              {insights?.recommendations.map((rule, idx) => (
+                <tr key={idx}>
+                  <td style={cellStyle}>{rule.antecedents.join(', ')}</td>
+                  <td style={cellStyle}>{rule.consequents.join(', ')}</td>
+                  <td style={cellStyle}>{(rule.confidence * 100).toFixed(1)}%</td>
+                  <td style={cellStyle}>{rule.lift.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
         </div>
       )}
 
