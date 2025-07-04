@@ -5,3 +5,4 @@ seaborn
 openpyxl
 flask
 flask-cors
+gunicorn
