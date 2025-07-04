@@ -7,6 +7,8 @@ function Dashboard({ insights }) {
   border: '1px solid #ccc',
   textAlign: 'center'
 };
+  const API_URL = process.env.VITE_API_URL;
+
 
 return (
     <div className="p-4">
@@ -31,7 +33,7 @@ return (
         <div className="chart-container">
           <h3>Sales Trend Over Time</h3>
           <img 
-            src={`http://localhost:5000/${insights.sales_chart_url}`} 
+            src={`${API_URL}/${insights.sales_chart_url}`} 
             alt="Sales Trend" 
             className="chart-image" 
           />
